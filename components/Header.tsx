@@ -12,6 +12,8 @@ import { HiHome } from "react-icons/hi"
 import { BiSearch } from "react-icons/bi"
 
 import useAuthModal from "@/hooks/UseAuthModal"
+import { toast } from "react-hot-toast"
+
 import { useUser } from "@/hooks/useUser"
 import { FaUserAlt } from "react-icons/fa"
 
@@ -33,7 +35,9 @@ const Header: React.FC<HeaderProps> = ({children, className}) => {
     router.refresh()
 
     if(error){
-      console.log(error);
+      toast.error(error.message)
+    }else{
+      toast.success('Logged out')
     }
   }
   return(
